@@ -17,6 +17,7 @@ defmodule TaskRabbit.Task do
   def run(:supervised_boom) do
     IO.puts "Calling supervised_boom"
     Process.exit(self(), :boom)
+    IO.puts "Should never print this line."
   end
 
   @doc """

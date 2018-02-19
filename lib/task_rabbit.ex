@@ -14,12 +14,4 @@ defmodule TaskRabbit do
     Task.async(fn -> "Look, ma!" end)
     |> Task.await()
   end
-
-  def supervised_boom! do
-    TaskRabbit.Task.run(:supervised_boom)
-  end
-
-  def supervised do
-    TaskRabbit.Task.run(:supervised)
-  end
 end
