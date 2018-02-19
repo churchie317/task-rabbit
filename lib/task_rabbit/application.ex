@@ -5,12 +5,16 @@ defmodule TaskRabbit.Application do
 
   def start(_type, _args) do
     children = [
-      Supervisor.child_spec({TaskRabbit.Task, :supervised_boom}, id: BadTaskRabbit.Task),
+      Supervisor.child_spec(
+        {TaskRabbit.Task, :supervised_boom},
+        id: BadTaskRabbit.Task
+      ),
       %{
         id: GoodTaskRabbit.Task,
         start: {TaskRabbit.Task, :start_link, [:supervised]},
         restart: :transient
       },
+      {Task.Supervisor, [name: TaskRabbit.TaskSupervisor]}
     ]
 
     opts = [strategy: :one_for_one, name: TaskRabbit.Supervisor]

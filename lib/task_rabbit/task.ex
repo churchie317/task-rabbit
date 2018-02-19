@@ -15,9 +15,9 @@ defmodule TaskRabbit.Task do
   {TaskRabbit.Task [:supervised_boom]}
   """
   def run(:supervised_boom) do
-    IO.puts "Calling supervised_boom"
+    IO.puts("Calling supervised_boom")
     Process.exit(self(), :boom)
-    IO.puts "Should never print this line."
+    IO.puts("Should never print this line.")
   end
 
   @doc """
@@ -25,7 +25,7 @@ defmodule TaskRabbit.Task do
   {TaskRabbit.Task [:supervised]}
   """
   def run(:supervised) do
-    IO.puts "Calling supervised"
+    IO.puts("Calling supervised")
     "Look, ma!"
   end
 end

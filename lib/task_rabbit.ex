@@ -14,4 +14,20 @@ defmodule TaskRabbit do
     Task.async(fn -> "Look, ma!" end)
     |> Task.await()
   end
+
+  def supervised_async_boom_nolink! do
+    Task.Supervisor.async_nolink(TaskRabbit.TaskSupervisor, fn ->
+      IO.puts("supervised_async_boom_nolink! called")
+      Process.exit(self(), :boom)
+    end)
+    |> Task.await()
+  end
+
+  def supervised_async_nolink do
+    Task.Supervisor.async_nolink(TaskRabbit.TaskSupervisor, fn ->
+      IO.puts("supvervised_async_nolink called")
+      "Look, ma!"
+    end)
+    |> Task.await()
+  end
 end
