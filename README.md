@@ -1,5 +1,4 @@
-
-TaskRabbit
+# TaskRabbit
 
 An exploration of Elixir's Task supervision strategy.
 
